@@ -13,6 +13,8 @@
  */
 package com.github.liyue2008.rpc.server;
 
+import com.github.liyue2008.rpc.hello.ApiResponse;
+import com.github.liyue2008.rpc.hello.HelloReq;
 import com.github.liyue2008.rpc.hello.HelloService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,5 +31,13 @@ public class HelloServiceImpl implements HelloService {
         String ret = "Hello, " + name;
         logger.info("HelloServiceImpl返回: {}.", ret);
         return ret;
+    }
+
+    @Override
+    public ApiResponse helloWorld(HelloReq req) {
+        ApiResponse response = new ApiResponse();
+        response.setCode("0");
+        response.setData(req.getId()+":"+req.getName());
+        return response;
     }
 }

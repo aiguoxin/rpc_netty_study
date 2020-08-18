@@ -17,8 +17,8 @@ package com.github.liyue2008.rpc.serialize.impl;
  * @author LiYue
  * Date: 2019/9/20
  */
-class Types {
-    final static int TYPE_STRING = 0;
-    final static int TYPE_METADATA = 100;
-    final static int TYPE_RPC_REQUEST = 101;
+public class Types {
+    public final static int TYPE_STRING = 0;
+    public final static int TYPE_METADATA = 100;
+    public final static int TYPE_RPC_REQUEST = 101;
 }
