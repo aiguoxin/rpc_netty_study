@@ -50,6 +50,10 @@
             <version>1.2.70</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

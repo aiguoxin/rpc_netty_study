@@ -72,7 +72,8 @@ public class SerializeSupport {
 
     public static <E> byte [] serialize(E  entry) {
         @SuppressWarnings("unchecked")
-        Serializer<E> serializer = (Serializer<E>) serializerMap.get(entry.getClass());
+        //此处有改动，获取不到对象的序列化器，采用默认的Object.class
+        Serializer<E> serializer = (Serializer<E>) serializerMap.getOrDefault(entry.getClass(),serializerMap.get(Object.class));
         if(serializer == null) {
             throw new SerializeException(String.format("Unknown entry class type: %s", entry.getClass().toString()));
         }

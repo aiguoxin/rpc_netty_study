@@ -20,8 +20,6 @@ import java.nio.charset.StandardCharsets;
 /**
  * @author LiYue
  * Date: 2019/9/20
- * /var/folders/5_/dkz6wc1x2z3b8p2gs5wcpggr0000gn/T/simple_rpc_name_service.data
- * d+com.github.liyue2008.rpc.hello.HelloServicerpc://localhost:9999%
  */
 public class StringSerializer implements Serializer<String> {
     @Override

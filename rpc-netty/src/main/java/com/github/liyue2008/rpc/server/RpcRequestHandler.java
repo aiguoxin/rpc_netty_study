@@ -47,10 +47,25 @@ public class RpcRequestHandler implements RequestHandler, ServiceProviderRegistr
             // 查找所有已注册的服务提供方，寻找rpcRequest中需要的服务
             Object serviceProvider = serviceProviders.get(rpcRequest.getInterfaceName());
             if(serviceProvider != null) {
+                /**
+                 * 只支持一个String参数的方法
+                 */
                 // 找到服务提供者，利用Java反射机制调用服务的对应方法
-                String arg = SerializeSupport.parse(rpcRequest.getSerializedArguments());
-                Method method = serviceProvider.getClass().getMethod(rpcRequest.getMethodName(), String.class);
-                String result = (String ) method.invoke(serviceProvider, arg);
+//                String arg = SerializeSupport.parse(rpcRequest.getSerializedArguments());
+//                Method method = serviceProvider.getClass().getMethod(rpcRequest.getMethodName(), String.class);
+//                String result = (String ) method.invoke(serviceProvider, arg);
+
+                /**
+                 * 改造支持各种参数类型
+                 */
+//需要支持对Object数组反序列化支持
+                Object[] arg = SerializeSupport.parse(rpcRequest.getSerializedArguments());
+                Class[] paraTypes = new Class[arg.length];
+                for(int i = 0; i< paraTypes.length; i++){
+                    paraTypes[i] = arg[i].getClass();
+                }
+                Method method = serviceProvider.getClass().getMethod(rpcRequest.getMethodName(),paraTypes);
+                Object result = method.invoke(serviceProvider, arg);
                 // 把结果封装成响应命令并返回
                 return new Command(new ResponseHeader(type(), header.getVersion(), header.getRequestId()), SerializeSupport.serialize(result));
             }
