@@ -32,39 +32,6 @@
     <packaging>pom</packaging>
     <name>Simple RPC Framework</name>
     <description>A simple RPC framework example.</description>
-    <repositories>
-        <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>libs-release</id>
-            <name>libs-release</name>
-            <url>http://jfrog.cloud.qiyi.domain/libs-release</url>
-        </repository>
-        <repository>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>libs-snapshot</id>
-            <name>libs-snapshot</name>
-            <url>http://jfrog.cloud.qiyi.domain/libs-snapshot</url>
-        </repository>
-        <repository>
-            <id>maven-old</id>
-            <name>maven-old</name>
-            <url>http://maven.qiyi.virtual/a/repository</url>
-        </repository>
-        <repository>
-            <id>nexus</id>
-            <url>http://maven.mbd.qiyi.domain/nexus/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <properties>
         <encoding>UTF-8</encoding>
