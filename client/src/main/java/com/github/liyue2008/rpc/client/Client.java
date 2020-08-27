@@ -36,7 +36,7 @@ public class Client {
 
         try (RpcAccessPoint rpcAccessPoint = ServiceSupport.load(RpcAccessPoint.class)) {
 
-            NameService nameService = rpcAccessPoint.getNameService(file.toURI());
+            NameService nameService = rpcAccessPoint.getNameService(getMysqlURI());
             assert nameService != null;
             URI uri = nameService.lookupService(serviceName);
 
@@ -52,5 +52,10 @@ public class Client {
             ApiResponse response = helloService.helloWorld(req);
             logger.info("收到响应: {}.", response);
         }
+    }
+
+    public static URI getMysqlURI(){
+        URI uri = URI.create("mysql:jdbc:mysql://bj.renzhengtest.w.qiyi.db:2193/renzheng_test?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;useAffectedRows=true&amp;zeroDateTimeBehavior=convertToNull");
+        return uri;
     }
 }

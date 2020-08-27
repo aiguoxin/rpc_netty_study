@@ -37,7 +37,7 @@ public class Server {
         try (RpcAccessPoint rpcAccessPoint = ServiceSupport.load(RpcAccessPoint.class);
                 Closeable ignored = rpcAccessPoint.startServer()) {
 
-            NameService nameService = rpcAccessPoint.getNameService(file.toURI());
+            NameService nameService = rpcAccessPoint.getNameService(getMysqlURI());
             assert nameService != null;
             logger.info("向RpcAccessPoint注册{}服务...", serviceName);
 
@@ -50,5 +50,10 @@ public class Server {
             System.in.read();
             logger.info("Bye!");
         }
+    }
+
+    public static URI getMysqlURI(){
+        URI uri = URI.create("mysql:jdbc:mysql://bj.renzhengtest.w.qiyi.db:2193/renzheng_test?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;useAffectedRows=true&amp;zeroDateTimeBehavior=convertToNull");
+        return uri;
     }
 }
