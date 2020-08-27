@@ -53,7 +53,7 @@ public class Server {
     }
 
     public static URI getMysqlURI(){
-        URI uri = URI.create("mysql:jdbc:mysql://bj.renzhengtest.w.qiyi.db:2193/renzheng_test?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;useAffectedRows=true&amp;zeroDateTimeBehavior=convertToNull");
+        URI uri = URI.create("mysql:jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;useAffectedRows=true&amp;zeroDateTimeBehavior=convertToNull");
         return uri;
     }
 }
